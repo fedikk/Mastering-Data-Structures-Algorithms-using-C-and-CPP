@@ -66,8 +66,10 @@ if you want to define a structure
 ```C
 Struct Rectangle
 {
-int length;  /* it takes 4 Bytes*/
-int width;   /* it takes 4 Bytes*/
+/* it takes 4 Bytes*/
+int length;
+/* it takes 4 Bytes*/
+int width;   
 /*Our Structure is 8 Bytes Memory */
 }
 ```
@@ -125,8 +127,10 @@ to allocate memory in the **Heap memory Section**
 int main()
 {
 int *p;
-p=(int *)malloc(7*sizeof(int)); /*this will allocate 10 Bytes in the heap memory in C language*/
-p= new int[8]                   /*this will allocate 10 Bytes in the heap memory in C++ language*/
+/*this will allocate 10 Bytes in the heap memory in C language*/
+p=(int *)malloc(7*sizeof(int));
+/*this will allocate 10 Bytes in the heap memory in C++ language*/
+p= new int[8]
 }
 
 ```
@@ -181,9 +185,9 @@ using namespace std;
 int main() {
    int a=4;
    /*
-   int r;   /*this is a variable to store integer */
-   int *r;  /*This is a pointer to store the address*/
-   int &r;  /*This is a reference and you must initialized*/
+   int r;   This is a variable to store integer 
+   int *r;  This is a pointer to store the address
+   int &r;  This is a reference and you must initialized
    */
    int &r=a;
  
@@ -207,7 +211,7 @@ int main() {
     struct Rectangle *p=&r;
     r.len=4;
     cout<<"("<<r.len<<","<<r.width<<")"<<endl;
-    p->len=10;
+    p->len=10; //(*p).len = 10;
     cout<<"("<<r.len<<","<<r.width<<")"<<endl;
 }
 ```
@@ -216,3 +220,50 @@ int main() {
 (4,21)
 (10,21)
 ```
+
+```C++
+#include <iostream>
+using namespace std;
+struct Rectangle {
+    int len;
+    int width;
+};
+int main() {
+    struct Rectangle *p;
+    p=(struct Rectangle *)malloc(sizeof(struct Rectangle));
+    p->len=55;
+    p->width=7;
+    cout<<"("<<p->len<<","<<p->width<<")"<<endl;
+    free(p);
+}
+```
+
+# Function 
+
+for paramater passing in C : 
+  - Pass by value
+  - Pass by adress
+
+For C++: 
+  - Pass by reference
+  - Pass by value
+  - Pass by adress
+
+```C++
+#include <iostream>
+using namespace std;
+int add(int a , int b)
+{
+  int c ;
+  c = a+b;
+  return c;
+}
+int main() {
+   int x,y,z;
+   x=15;
+   y=46;
+   z= add(x,y);
+   printf("sum = %d",z);
+}
+```
+# Parameter passing methods
