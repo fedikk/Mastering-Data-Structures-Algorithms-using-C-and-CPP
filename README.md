@@ -110,4 +110,109 @@ char addr[50];
 int phonenumber;
 }
 ```
+# Pointers 
+data variable       int a=10;
+address variables   int *p; 
+p= &a; 
+printf("%d",a);
+printf("%d",*p);
 
+to allocate memory in the **Heap memory Section**
+
+```C
+
+#include<stdlib.h>
+int main()
+{
+int *p;
+p=(int *)malloc(7*sizeof(int)); /*this will allocate 10 Bytes in the heap memory in C language*/
+p= new int[8]                   /*this will allocate 10 Bytes in the heap memory in C++ language*/
+}
+
+```
+
+![image](https://github.com/user-attachments/assets/e78efa4e-d118-4aef-a4ee-2772fcf6ad68)
+
+you should also delete the memory used after we finish using it 
+
+```C
+
+#include<stdlib.h>
+int main()
+{
+int *p;
+p=(int *)malloc(7*sizeof(int));
+
+delete [] p; /*used ic C++ Language*/
+free(p);     /*used in C   Language*/
+}
+
+```
+
+```C
+#include <iostream>
+using namespace std;
+struct Rectangle {
+    int len;
+    int width;
+};
+int main() {
+    int *p1;
+    char *p2;
+    float *p3;
+    double *p4;
+    struct Rectangle *p5;
+    cout<<sizeof(p1)<<endl;
+    cout<<sizeof(p2)<<endl;
+    cout<<sizeof(p3)<<endl;
+    cout<<sizeof(p4)<<endl;
+    cout<<sizeof(p5)<<endl;
+    return 0; 
+}
+
+```
+![image](https://github.com/user-attachments/assets/bf57a165-5365-47fe-90fb-65d1116ba9c9)
+
+# Reference in C++ 
+
+```C++
+#include <iostream>
+using namespace std;
+int main() {
+   int a=4;
+   /*
+   int r;   /*this is a variable to store integer */
+   int *r;  /*This is a pointer to store the address*/
+   int &r;  /*This is a reference and you must initialized*/
+   */
+   int &r=a;
+ 
+}
+
+```
+![image](https://github.com/user-attachments/assets/5e7cb0ea-55e8-4e29-800d-d9ecaca3c2f7)
+
+
+# Pointer to Structure
+
+```C++
+#include <iostream>
+using namespace std;
+struct Rectangle {
+    int len;
+    int width;
+};
+int main() {
+    struct Rectangle r={20,21};
+    struct Rectangle *p=&r;
+    r.len=4;
+    cout<<"("<<r.len<<","<<r.width<<")"<<endl;
+    p->len=10;
+    cout<<"("<<r.len<<","<<r.width<<")"<<endl;
+}
+```
+
+```
+(4,21)
+(10,21)
+```
