@@ -58,3 +58,56 @@ int main() {
     return 0;
 }
 ```
+
+## Structures 
+
+if you want to define a structure 
+
+```C
+Struct Rectangle
+{
+int length;  /* it takes 4 Bytes*/
+int width;   /* it takes 4 Bytes*/
+/*Our Structure is 8 Bytes Memory */
+}
+```
+
+how to declare a variable of the structure type 
+
+```C
+
+int main()
+{
+struct Rectangle r;         /*Declaration*/
+struct Rectangle r1={10,5}; /*Declaration with initialisation*/
+r1.length = 12;
+r.width   = 10;
+printf("Area of Rectangle = %d", r1.length*r1.width); 
+}
+
+```
+
+Let's write now a **Complex Number**: 
+
+```C
+Struct ComplexNumber
+{
+/* complex number = a + i * b  */
+int real;  /* it takes 4 Bytes*/
+int img;   /* it takes 4 Bytes*/
+}
+```
+
+
+```C
+Struct Student 
+{
+char name[25] ;
+char LastName[25];
+int StudentID;
+char Departement[25];
+char addr[50];
+int phonenumber;
+}
+```
+
