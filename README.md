@@ -315,3 +315,185 @@ printf("%d %d",a,b);
 }
 
 ```
+
+# Call by Reference ( Only in C++ ) 
+
+Let's learn how to **write Call by Reference** and how **it works**
+
+```C
+/* x will become a reference to a and y will be a reference to b */
+void swap(int &x,int &y)
+{
+int temp;
+temp=x;
+x=y;
+y=temp;
+}
+
+int main(){
+int a=10,b=20;
+swap(a,b);
+printf("%d %d",a,b);
+}
+
+```
+
+<quote>
+Dont use Call by reference to heavy functions and Complex logic .
+</quote>
+
+# Array as a Parameter 
+
+```C
+/* We should put the bruckers [] */
+/*void fun (int *A,int n)*/
+void fun (int A[],int n)
+{
+  /* I can modify the value of an element */
+  A[0]=44; 
+  for (int i=0;i<n;i++)
+  {
+    printf("%d",A[i]);
+  }
+}
+
+int main(){
+  int A[3]={2,4,6};
+  fun(A,3);
+}
+
+```
+
+with C++: 
+
+```C++
+#include <iostream>
+
+
+void fun (int A[])
+{
+  for (int i=0;i<3;i++)
+  {
+    printf("%d",A[i]);
+  }
+  
+}
+
+int main(){
+  int A[3]={2,4,6};
+  fun(A);
+  for(int x:A)
+    printf("%d | ", x);
+}
+
+```
+
+#### Whether C or C++, arrays can be passed only by address 
+
+# Return an Array 
+
+```C
+/* int * fun(int n)*/
+/*Some compilers don't allow [] replace it with * */
+int [] fun(int n){
+  int *p;
+  p=(int *)malloc(n*sizeof(int));
+  return(p);
+}
+
+int main(){
+  int *A;
+  A=fun(3);
+}
+
+```
+
+```C++
+int [] fun(int n){
+  int *p;
+  p=(int *)malloc(n*sizeof(int));
+  for(int i=0;i<n;i++)
+  {
+    p[i]=i+1;
+  }
+  return(p);
+}
+
+int main(){
+  int *A,sz=7;
+  A=fun(sz);
+  for(int i=0;i<sz;i++)
+  {
+    cout<<A[i]<<endl;
+  }
+}
+
+```
+
+# Structure as a Parameter 
+## Call by value Method
+
+```C
+struct Rectangle
+{
+  int len;
+  int width;
+}
+int area (struct Rectangle rect)
+{
+  rect.len++;
+  return rect.len*rect*width;
+}
+
+int main(){
+  struct Rectangle r={10,20}
+  printf("Area=%d",area(r));
+}
+
+```
+
+## Call by Reference Method 
+
+```C
+struct Rectangle
+{
+  int len;
+  int width;
+}
+int area (struct Rectangle &rect)
+{
+  /*The value of Length will be modified*/
+  rect.len++;
+  return rect.len*rect*width;
+}
+
+int main(){
+  struct Rectangle r={10,20}
+  printf("Area=%d",area(r));
+}
+
+```
+
+## Call by Address Method 
+
+```C
+struct Rectangle
+{
+  int len;
+  int width;
+}
+void ChangeLength (struct Rectangle *rect, int v)
+{
+  /*The value of Length will be modified*/
+  rect->len = v;
+  return rect.len*rect*width;
+}
+
+int main(){
+  struct Rectangle r={10,20};
+  ChangeLength(&r,20);
+  printf("Area Length = %d",r.len);
+}
+
+```
+
