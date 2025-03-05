@@ -267,3 +267,51 @@ int main() {
 }
 ```
 # Parameter passing methods
+
+```C
+/*The formel parameter will be modified*/
+void swap(int x,int y)
+{
+int temp;
+temp=x;
+x=y;
+y=temp;
+}
+
+int main(){
+int a=10,b=20;
+swap(a,b);
+printf("%d %d",a,b);
+
+}
+
+10,20 
+```
+
+In The **pass by value** the original parmaeter value ont change 
+we work on a copy of it.
+
+- We generally use the passing parameter when the function should return a type
+
+# Call by Address
+  
+Any change inside the function will modify the actual parameters 
+Let's learn how to **write Call by Address** and how **it works**
+
+```C
+/*The formel parameter will be modified*/
+void swap(int *x,int* y)
+{
+int temp;
+temp=*x;
+*x=*y;
+*y=temp;
+}
+
+int main(){
+int a=10,b=20;
+swap(&a,&b);
+printf("%d %d",a,b);
+}
+
+```
