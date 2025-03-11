@@ -594,3 +594,287 @@ int main ()
 }
 
 ```
+# Monolotic Program 
+
+```C++
+#include <iostream>
+#include<stdio.h>
+using namespace std;
+
+int main()
+{
+    int len=0,wid=0;
+    printf("Enter Length and width");
+    cin>>len>>wid;
+    int area=len*wid;
+    int peri= 2*(len+wid);
+    cout<<"Area = "<<area<<endl;
+    cout<<"Perimeter = "<<peri<<endl;
+    return 0;
+}
+
+```
+
+# Modular Program 
+
+```C++
+#include <iostream>
+#include<stdio.h>
+using namespace std;
+
+
+int ComputeArea(int l, int w) {
+  return l*w;
+}
+int ComputePeri(int l, int w) {
+  return 2*(l+w);
+}
+int main()
+{
+    int len=0,wid=0;
+    printf("Enter Length and width");
+    cin>>len>>wid;
+    cout<<"Area = "<<ComputeArea(len,wid)<<endl;
+    cout<<"Perimeter = "<<ComputePeri(len,wid)<<endl;
+    return 0;
+}
+
+```
+
+# Structure and functions  
+
+```C++
+#include <iostream>
+#include<stdio.h>
+using namespace std;
+
+struct Rectangle {
+    int length;
+    int width;
+};
+
+void initialize(Rectangle *r,int l,int w)
+{
+  r->length=l;
+  r->width=w;
+}
+int ComputeArea(Rectangle r) {
+  return r.length*r.width;
+}
+int ComputePeri(Rectangle r) {
+  return 2*(r.length+r.width);
+}
+int main()
+{
+    Rectangle r={0,0};
+
+    int l,w;
+    printf("Enter Length and width");
+    cin>>l>>w;
+
+    initialize(&r,l,w);
+
+    cout<<"Area = "<<ComputeArea(r)<<endl;
+    cout<<"Perimeter = "<<ComputePeri(r)<<endl;
+
+    return 0;
+}
+
+
+```
+
+# Object oriented Program   
+
+in C++ **Structure & Classes** are the **same** but in the **structure everything is by default public**
+and in the **Class everything is by default private**
+
+```C++
+#include <iostream>
+#include<stdio.h>
+using namespace std;
+
+class Rectangle {
+    private : 
+    int length;
+    int width;
+
+    public:
+    void initialize(int l,int w)
+    {
+      length=l;
+      width=w;
+    }
+    int ComputeArea() {
+      return length*width;
+    }
+    int ComputePeri() {
+      return 2*(length+width);
+    }
+};
+int main()
+{
+    Rectangle r={0,0};
+
+    int l,w;
+    printf("Enter Length and width");
+    cin>>l>>w;
+
+    r.initialize(l,w);
+
+    cout<<"Area = "<<r.ComputeArea()<<endl;
+    cout<<"Perimeter = "<<r.ComputePeri()<<endl;
+
+    return 0;
+}
+```
+
+#C++ Class and constructor 
+
+```C++
+#include <iostream>
+#include<stdio.h>
+using namespace std;
+
+class Rectangle
+{
+    private : 
+    int length;
+    int width;
+
+    public:
+
+    Rectangle(){ length=width=1;}
+    Rectangle(int l,int w);
+    int ComputeArea();
+    int ComputePeri();
+    int getLength(){ return length;};
+    void setLength(int l){length=l;};
+    ~Rectangle(){cout<<"Destructor";}; 
+};
+Rectangle::Rectangle(int l,int w)
+{
+    length=l;
+    width=w;
+}
+int Rectangle::ComputeArea()
+{
+     return length*width;
+}
+int Rectangle::ComputePeri()
+{
+      return 2*(length+width);
+}
+
+int main()
+{
+    Rectangle r(10,10);
+    cout<<"Area = "<<r.ComputeArea()<<endl;
+    cout<<"Perimeter = "<<r.ComputePeri()<<endl;
+    r.setLength(155);
+    cout<<"r length = "<<r.getLength()<<endl;
+    return 0;
+}
+```
+
+
+# Template Class 
+
+```Cpp
+class Arithmetic 
+{
+  private:
+    int a;
+    int b;
+  public:
+    Arithmetic(int a,int b);
+    int add();
+    int sub();
+};
+
+Arithmetic::Arithmetic(int a,int b)
+{
+  this->a = a;
+  this->b = b;
+}
+
+int Arithmetic::add(int a,int b)
+{
+  return a+b;
+}
+int Arithmetic::sub(int a,int b)
+{
+  return a-b;
+}
+```
+
+Let's make our code a template
+
+```Cpp
+
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+
+template<class T>
+class Arithmetic 
+{
+  private:
+    T a;
+    T b;
+  public:
+    Arithmetic(T a, T b);
+    T add();
+    T sub();
+};
+
+template<class T>
+Arithmetic<T>::Arithmetic(T a, T b)    // because we are using a template class we should add <T>
+{
+  this->a = a;
+  this->b = b;
+}
+
+template<class T>
+T Arithmetic<T>::add()
+{
+  return a + b;
+}
+
+template<class T>
+T Arithmetic<T>::sub()
+{
+  return a - b;
+}
+
+int main()
+{
+  Arithmetic<int> ar(10, 5);
+  cout << "somme = " << ar.add() << endl;
+  return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/ab6ad1c4-8487-467f-b9f5-7c6449f36c55)
+
+# Required Setup for Programming 
+
+- online C and Cpp compiler : [**C/C++ Compiler**]( https://www.programiz.com/cpp-programming/online-compiler/)
+- C/C++ IDE : [**Codeblocks**](https://www.codeblocks.org/downloads/)
+- Dev-C++ : [**mingw**](https://sourceforge.net/projects/orwelldevcpp/files/Compilers/MinGW/)
+- Visual Studio Code : [**VSCode**](https://code.visualstudio.com/download)
+
+___ 
+
+# Introduction to DataStructure 
+
+
+# Stack vs Heap Memory
+
+## Static vs Daynamic Memory Allocation 
+
+```cpp
+void main()
+{
+  int a; // it takes 2 bytes
+  int b; // it takes 4 bytes 
+}
+```
