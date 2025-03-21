@@ -935,3 +935,54 @@ the operations : + - * / % ++ -- etc
 
 1. for( int i=0;i<n;i++) => O(n)
 2. for ( int i=n;i>1;i=i/2) or while(i>1) {i=i/2;} => log2(n)
+
+# Recursion 
+
+## what's is Recursion 
+if a function is calling it self again 
+
+```cpp
+void funct1(int n) {
+if (n>0) {
+  printf("%d",n);
+  funct1(n-1);
+  }
+}
+
+void main()
+{
+int x=3;
+funct1(x);
+}
+```
+the Output will be : **321**
+
+```cpp
+void funct1(int n) {
+if (n>0) {
+  funct1(n-1);
+  printf("%d",n);
+  }
+}
+
+void main()
+{
+int x=3;
+funct1(x);
+}
+```
+
+the Output will be : **123**
+
+# How Recursion uses Stack 
+
+![image](https://github.com/user-attachments/assets/99c09409-1fb3-46d7-ac53-4ff0662c5d0d)
+
+#Recurrence Relation - Time Complexity of Recursion
+
+void func1(int n) {          // time : T(n)
+  if(n>0){                   // time : 1
+  printf("%d",n);            // Time : 1 
+  func1(n-1);                // Time : T(n-1)
+  }
+}                            // T(n)=T(n-1)+2
