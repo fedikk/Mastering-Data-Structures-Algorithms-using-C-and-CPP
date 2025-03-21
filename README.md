@@ -878,3 +878,60 @@ void main()
   int b; // it takes 4 bytes 
 }
 ```
+# Heap 
+it is used in **2 cases:**
+  - if things are properly organised like a tower .
+  - It s not an organized memory
+  - Heap memory should be traited as a resource : **When required you take the memory when you don't you release it**
+  - programs cannot access heap memory directly
+## How to access to a HEAP Memory 
+
+```cpp
+void main()
+{
+  int *p;              // it takes 2 bytes
+  p = new int[5];      // new means new memory is allocated in HEAP in Cpp
+  p= (int*)malloc(2*5) // new means new memory is allocated in HEAP in Cpp
+  delete []p;
+  p= NULL;
+}
+```
+
+#Physical vs Logical data structure
+## Physical  data structure
+
+bascily we have : 
+  1. Array
+  2. Linked List
+
+They are called **Physical** because this structures decides how the memory os organized.
+
+When to use an array : When you know the length of the list. 
+When to use a linked list : When you have a variable length of the list and they are always created inside the **HEAP**. 
+
+## Logical data structure
+
+bascily we have : 
+  1. Stack   ( **LIFO** ) 
+  2. Queues  ( **FIFO** )
+  3. trees
+  4. Graph
+  5. Hash Table
+
+**Stack and Queues** are **linear data structure** and **Trees and graph** are **non linear data structure**
+**Hash table** is tabular data structure
+
+# ADT 
+
+Adt stands for **abstract data Type**. the data type is defined as : 
+1. representation of data
+2. Operation on data
+
+for example let's take integer in Cpp: 
+in Cpp it's representes on 2 bytes : **1bit** for the sign and **15bits** for the data
+the operations : + - * / % ++ -- etc
+
+#Time and space complexity 
+
+1. for( int i=0;i<n;i++) => O(n)
+2. for ( int i=n;i>1;i=i/2) or while(i>1) {i=i/2;} => log2(n)
